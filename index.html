@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Health & BMI Calculator</title>
+    <style>
+        body { font-family: sans-serif; margin: 0; padding: 0; }
+header { background-color: #18e745; color: white; text-align: center; padding: 1em 0; position: sticky; top: 0; z-index: 1000; }
+
+        nav ul { list-style: none; padding: 0; margin: 0; display: flex; justify-content: center; }
+        nav li { margin: 0 15px; }
+        nav a { color: white; text-decoration: none; }
+        main { padding: 20px; }
+        .product-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .product { border: 1px solid #ddd; padding: 15px; border-radius: 5px; }
+        input[type="text"], input[type="number"], select { width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box; }
+        button { background-color: #27ae60; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; }
+        #result { margin-top: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        footer { background-color: #f0f0f0; text-align: center; padding: 10px 0; }
+        .image-container { display: flex; justify-content: center; gap: 20px; } /* New CSS class for image alignment */
+    </style>
+    <script>
+        function calculateBMI(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            let height = parseFloat(document.getElementById('height').value);
+            const heightUnit = document.getElementById('heightUnit').value;
+            const weight = parseFloat(document.getElementById('weight').value);
+            const age = parseInt(document.getElementById('age').value);
+            const gender = document.getElementById('gender').value;
+            const vegetarian = document.getElementById('vegetarian').value;
+            const dailyActivity = document.getElementById('dailyActivity').value;
+
+            // Convert height to meters
+            if (heightUnit === 'feet') {
+                height = height * 0.3048;
+            } else if (heightUnit === 'inches') {
+                height = height * 0.0254;
+            }
+
+            const bmi = (weight / (height * height)).toFixed(2);
+
+            let healthStatus;
+            let dietPlan = "";
+            let exercisePlan = "";
+            let activityAnalysis = "";
+
+            // Activity Analysis
+            if (dailyActivity === "sedentary") {
+                activityAnalysis = "<p><b>Daily Activity:</b> You have a sedentary lifestyle. Consider adding more physical activity to your daily routine.</p>";
+            } else if (dailyActivity === "light") {
+                activityAnalysis = "<p><b>Daily Activity:</b> You engage in light physical activity. Keep up the good work, and consider increasing the intensity or duration.</p>";
+            } else if (dailyActivity === "moderate") {
+                activityAnalysis = "<p><b>Daily Activity:</b> You have a moderately active lifestyle. This is beneficial for your health. Continue with regular exercise.</p>";
+            } else if (dailyActivity === "active") {
+                activityAnalysis = "<p><b>Daily Activity:</b> You have a very active lifestyle. This is excellent for your health. Maintain your current level of activity.</p>";
+            }
+
+            if (bmi < 18.5) {
+                healthStatus = "Underweight";
+                exercisePlan = "<p><b>Exercise:</b> Focus on strength training to build muscle mass. Include exercises like squats, lunges, push-ups, and weightlifting. Limit cardio to avoid burning too many calories.</p>";
+                if (vegetarian === "yes") {
+                    dietPlan = "<p><b>Diet (Underweight, Vegetarian):</b> Increase intake of nuts, seeds, legumes, whole grains, and healthy fats like avocados and olive oil. Include protein sources like tofu, tempeh, and dairy.</p>";
+                } else {
+                    dietPlan = "<p><b>Diet (Underweight, Non-Vegetarian):</b> Include lean meats, poultry, fish, eggs, and dairy. Add healthy fats like nuts, seeds, and avocados. Focus on calorie-dense foods like whole grains and sweet potatoes.</p>";
+                }
+            } else if (bmi >= 18.5 && bmi < 24.9) {
+                healthStatus = "Healthy";
+                exercisePlan = "<p><b>Exercise:</b> Maintain a balanced routine with cardio and strength training. Aim for at least 150 minutes of moderate-intensity cardio per week, along with strength training exercises twice a week.</p>";
+                if (vegetarian === "yes") {
+                    dietPlan = "<p><b>Diet (Healthy, Vegetarian):</b> Maintain a balanced diet with a variety of fruits, vegetables, whole grains, and plant-based protein sources like legumes and tofu.</p>";
+                } else {
+                    dietPlan = "<p><b>Diet (Healthy, Non-Vegetarian):</b> Focus on lean proteins, fruits, vegetables, and whole grains. Limit processed foods and sugary drinks.</p>";
+                }
+            } else if (bmi >= 25 && bmi < 29.9) {
+                healthStatus = "Overweight";
+                exercisePlan = "<p><b>Exercise:</b> Focus on cardio exercises like brisk walking, jogging, swimming, or cycling. Aim for at least 30 minutes of moderate-intensity cardio most days of the week. Include strength training exercises twice a week.</p>";
+                if (vegetarian === "yes") {
+                    dietPlan = "<p><b>Diet (Overweight, Vegetarian):</b> Focus on vegetables, whole grains, and plant-based protein. Limit processed vegetarian foods and sugary drinks. Control portion sizes.</p>";
+                } else {
+                    dietPlan = "<p><b>Diet (Overweight, Non-Vegetarian):</b> Choose lean proteins like chicken breast, fish, and turkey. Increase vegetable intake and reduce refined carbohydrates. Control portion sizes.</p>";
+                }
+            } else {
+                healthStatus = "Obese";
+                exercisePlan = "<p><b>Exercise:</b> Start with low-impact cardio exercises like walking or swimming. Gradually increase intensity and duration. Consult a healthcare professional or certified trainer for guidance. Include strength training exercises as tolerated.</p>";
+                if (vegetarian === "yes") {
+                    dietPlan = "<p><b>Diet (Obese, Vegetarian):</b> Focus on whole, unprocessed foods like vegetables, whole grains, and plant-based proteins. Limit processed foods, sugary drinks, and unhealthy fats. Consult a registered dietitian.</p>";
+                } else {
+                    dietPlan = "<p><b>Diet (Obese, Non-Vegetarian):</b> Consult a healthcare professional or registered dietitian for a personalized plan. Focus on lean proteins, vegetables, and whole grains. Limit processed foods, sugary drinks, and unhealthy fats.</p>";
+                }
+            }
+
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `
+                <h2>BMI Result</h2>
+                <p>Hello, ${name}!</p>
+                <p>Your BMI is: ${bmi}</p>
+                <p>Your health status is: ${healthStatus}</p>
+                ${dietPlan}
+                ${exercisePlan}
+                ${activityAnalysis}
+            `;
+        }
+
+        function showDiseaseInfo() {
+            const select = document.getElementById('diseaseSelect');
+            const selectedValue = select.value;
+            const resultDiv = document.getElementById('result');
+            let symptoms = "";
+            let cure = "";
+
+            switch (selectedValue) {
+                case "disease1.html":
+                    symptoms = "Symptoms of Fever.";
+                    cure = "Cure: Rest, hydration, and over-the-counter medications.Consume Vitamin C rich fruits and vegetables to boost Immunity.";
+                    break;
+                case "disease2.html":
+                    symptoms = "Symptoms of Malaria .";
+                    cure = "Cure: Antimalarial medications.Neem and Tulsi to Boost immunity and pappay leaves can recover platlets.";
+                    break;
+                case "disease3.html":
+                    symptoms = "Symptoms of Loose Motion .";
+                    cure = "Cure: Hydration and dietary adjustments.Ginger tea and Cumin seeds reduce Symotoms.";
+                    break;
+                case "disease4.html":
+                    symptoms = "Symptoms of Vomiting.";
+                    cure = "Cure: Rest and hydration.USe Ginger to reduce vommiting.";
+                    break;
+                case "disease5.html":
+                    symptoms = "Symptoms of Cold and Cough.";
+                    cure = "Cure: Rest, fluids, and over-the-counter medications. Use steam inhalation and saline nasal sprays.Also use of black pepper will relive throat pain.";
+                    break;
+                case "disease6.html":
+                    symptoms = "Symptoms of Dengue.";
+                    cure = "Cure: Supportive care and hydration.Use pappay leaves juice to cure dengue";
+                    break;
+                case "disease7.html":
+                    symptoms = "Symptoms of Typhoid Fever.";
+                    cure = "Cure: Antibiotics and hydration.Garlic is known for its anti-bacterial properties to fight against bacteria and Neem to boost Immunity.";
+                    break;
+                default:
+                    symptoms = "Please select a disease.";
+                    cure = "";
+            }
+
+            resultDiv.innerHTML = `
+                <h2>Disease Information</h2>
+                <p><b>Symptoms:</b> ${symptoms}</p>
+                <p><b>Cure:</b> ${cure}</p>
+            `;
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">Health & BMI Calculator</div>
+        <nav>
+            <ul>
+                <li><a href="first.html"><button >Home</button></a></li>
+                <li><a href="Health tips.html"><button onclick="login()">Healthcare Tip</button></a></li>
+                <li><a href="First Aid.html"><button >First Aid</button></a></li>
+                <li><a href="TeleMidacation.html"><button>TeleMedication</button></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="image-container"> <!-- New container for images -->
+            <div class="Img">
+            <img src="https://images.pexels.com/photos/2383010/pexels-photo-2383010.jpeg?auto=compress&cs=tinysrgb&w=600" style="width: 300px; height: 200px; object-fit: cover;">
+            </div>
+            <div class="Omg"> 
+            <img src="https://images.pexels.com/photos/2280568/pexels-photo-2280568.jpeg?auto=compress&cs=tinysrgb&w=600" style="width: 300px; height: 200px; object-fit: cover;">
+            </div>
+        </div>
+        <h1>Take Actions Before Taking Medicines</h1>
+        <p>  Prevention is Better tha Cure.</p>
+        <p>We should have the basic idea of our health status and be aware of our own body.In the Places where there is underserved Healthcare we are providing the first aid and a basic health status of your Body.</p>
+        <p>We also provide the nutritious diet and the healthy lifestyle to our customers.And follow the steps for your benifits</p>
+        <p>The importance of preventive health care cannot be over-emphasized in the wake of shocking statistics of how health is deteriorating rapidly due to a lack of preventive measures. This grueling reality must have been on Elgin Moray’s mind when he said, “If prompt and effective action is not forthcoming, the medical services of the central and local authorities will go where the school of dental services has already gone down the drain” (British Medical Journal, 1949, p. 1416). Elgin made this observation many years ago but it is very relevant in today’s preventive medicine. It emphasizes the neglect that practitioners and stakeholders gave and still give to preventive healthcare.</p>
+        <p>Well, as the old adage goes, prevention is better than cure. Preventive healthcare results in reduced mortality rates and this consequently increase life expectancy. Preventive medicine is significantly cheaper as compared to traditional medicine that many people prefer. Lack of preventive medicine puts individuals in danger of insalubrious lifestyles and varying food habits (Jekel, Katz and Elmore, 2001, p. 114). Being strong and big is not a sign of a healthy lifestyle. Someone may be strong and active but inside he or she harbors a health disaster waiting to strike. </p>
+
+        <h1>Check Your Health Status</h1>
+        <p>Calculate your BMI and learn about your health.</p>
+
+        <h1>Enter Your Details</h1>
+        <form onsubmit="calculateBMI(event)">
+            <div class="product-container">
+                <div class="product">
+                    <h2>Name</h2>
+                    <input type="text" id="name" name="name" required minlength="4" maxlength="15" placeholder="Your Name"/>
+                </div>
+                <div class="product">
+                    <h2>Height</h2>
+                    <input type="number" id="height" name="height" required step="0.01" placeholder="Enter Height"/>
+                    <select id="heightUnit">
+                        <option value="meters">Meters</option>
+                        <option value="feet">Feet</option>
+                        <option value="inches">Inches</option>
+                    </select>
+                </div>
+                <div class="product">
+                    <h2>Weight (kg)</h2>
+                    <input type="number" id="weight" name="weight" required placeholder="Weight in kg"/>
+                </div>
+                <div class="product">
+                    <h2>Age</h2>
+                    <input type="number" id="age" name="age" required placeholder="Your Age"/>
+                </div>
+                <div class="product">
+                    <h2>Gender</h2>
+                    <select id="gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="others">Others</option>
+                    </select>
+                </div>
+                <div class="product">
+                    <h2>Vegetarian</h2>
+                    <select id="vegetarian">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div class="product">
+                    <h2>Daily Activity Level</h2>
+                    <select id="dailyActivity">
+                        <option value="sedentary">Sedentary (e.g., desk job, little to no exercise)</option>
+                        <option value="light">Light (e.g., some walking, light housework)</option>
+                        <option value="moderate">Moderate (e.g., regular walks, moderate exercise)</option>
+                        <option value="active">Active (e.g., intense exercise, physical labor)</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit">Calculate BMI</button>
+        </form>
+
+        <div id="result"></div>
+        
+        <h1>Select a Disease</h1>
+        <div class="disease-container">
+            <select id="diseaseSelect">
+                <option value="">--Select Symptoms--</option>
+                <option value="disease1.html"> High temperature, chills, sweating</option>
+                <option value="disease2.html">Fever, chills, headache, nausea</option>
+                <option value="disease3.html">Frequent watery stools</option>
+                <option value="disease4.html">Nausea, throwing up</option>
+                <option value="disease5.html">Runny nose, sore throat</option>
+                <option value="disease6.html">High fever, severe headache, pain behind the eyes</option>
+                <option value="disease7.html">Prolonged fever, weakness, stomach pain</option>
+            </select>
+            <button onclick="showDiseaseInfo()">Submit</button> <!-- Updated Submit Button -->
+        </div>
+        <div class="Introduction">
+            <h1>Diseases</h1>
+          <p>Diseases are a vast and critical topic, encompassing everything from common colds to complex conditions like cancer. Here's a brief overview:</p>
+
+           <p> 1. Types of Diseases:</p>
+            
+            <p>Infectious Diseases: Caused by pathogens like bacteria, viruses, fungi, or parasites (e.g., flu, malaria).
+            
+            Non-Infectious Diseases: Result from genetic, environmental, or lifestyle factors (e.g., diabetes, heart disease).
+            
+            Chronic Diseases: Long-lasting conditions that often require ongoing management (e.g., asthma, arthritis).
+            
+            Acute Diseases: Sudden onset and short duration (e.g., appendicitis).</p>
+            
+           <p> 2. Causes and Risk Factors:</p>
+            
+            <p>Genetics: Some diseases are inherited (e.g., cystic fibrosis).
+            
+            Lifestyle Choices: Poor diet, lack of exercise, and smoking can lead to conditions like obesity or lung cancer.
+            
+            Environmental Factors: Pollution and exposure to toxins can trigger diseases.
+            
+            Infections: Spread through contact, air, water, or vectors like mosquitoes.</p>
+            
+            <p>3. Prevention and Management:</p>
+            
+            <p>Vaccination: Protects against diseases like measles and polio.
+            
+            Healthy Lifestyle: Balanced diet, regular exercise, and avoiding harmful habits.
+            
+            Early Detection: Regular check-ups and screenings can catch diseases early.
+            
+            Treatment: Ranges from medication to surgery, depending on the condition.</p>  
+<img src="https://th.bing.com/th/id/R.f72d3ec0ead8037d2cd96213dfc26fa6?rik=cKiIOW%2fs5aUpQg&riu=http%3a%2f%2fwww.metapharmacyservices.com%2fwp-content%2fuploads%2f2015%2f12%2finfections-disease-therapy.jpg&ehk=YWda6U1jm2A0y6kKZccEsNt8EUEJuvlAi%2fH0W8CPvtI%3d&risl=&pid=ImgRaw&r=0" style="width: 800px; height: 500px;">
+<p>Our comprehensive A to Z listing ensures easy navigation, allowing you to quickly find information relevant to your specific symptoms. Each article provides valuable insights into the symptoms, their possible causes, and related medical conditions. We understand the importance of staying up-to-date, so our articles also include links to the latest news, research, and drugs, enabling you to access additional resources for a comprehensive understanding of your symptoms.</p>
+<p>Take charge of your health by arming yourself with knowledge. Use our A to Z listing to explore symptom-related articles, and empower yourself to have meaningful discussions with your healthcare provider. Remember, early detection and prompt medical attention are crucial for effective management and treatment of various conditions</p>
+<img src="https://thumbs.dreamstime.com/b/modern-human-diseases-infographic-design-template-icons-healthcare-infographic-visualization-bubble-design-modern-human-215290317.jpg" style="width: 800px; height: 500px;">
+<p> </p>
+
+            
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Health Calculator. All rights reserved.</p>
+    </footer>
+</body>
+</html>

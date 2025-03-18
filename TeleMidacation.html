@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telemedicine Webpage</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            color: #333;
+            text-align: center;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(15px);
+            margin-top: 30px;
+        }
+
+        /* Doctor Profile Cards */
+        .doctor {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            margin: 15px 0;
+            transition: 0.3s;
+        }
+
+        .doctor:hover {
+            transform: scale(1.03);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .doctor img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+
+        .doctor div {
+            flex: 1;
+            margin-left: 15px;
+        }
+
+        .btn {
+            background: #ff6f61;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #e0483b;
+            transform: scale(1.05);
+        }
+
+        /* Appointment Form */
+        #appointmentForm {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        /* Chat Box */
+        #chatBox {
+            margin-top: 20px;
+            border: none;
+            padding: 10px;
+            max-height: 200px;
+            overflow-y: auto;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+        }
+
+        #chatInput {
+            width: 70%;
+            padding: 8px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        @media (max-width: 600px) {
+            .doctor {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>Telemedicine Webpage</header>
+
+    <div class="container">
+        <h2>Available Doctors</h2>
+
+        <div class="doctor">
+            <img src="https://via.placeholder.com/70" alt="Doctor">
+            <div>
+                <h3>Dr. John Doe</h3>
+                <p>Cardiologist</p>
+            </div>
+            <button class="btn" onclick="showForm('Dr. John Doe')">Book</button>
+            <button class="btn" onclick="startVideoCall()">Video Call</button>
+        </div>
+
+        <div class="doctor">
+            <img src="https://via.placeholder.com/70" alt="Doctor">
+            <div>
+                <h3>Dr. Jane Smith</h3>
+                <p>Dermatologist</p>
+            </div>
+            <button class="btn" onclick="showForm('Dr. Jane Smith')">Book</button>
+            <button class="btn" onclick="startVideoCall()">Video Call</button>
+        </div>
+
+        <!-- Appointment Form -->
+        <div id="appointmentForm">
+            <h3>Book an Appointment</h3>
+            <p id="selectedDoctor"></p>
+            <input type="text" id="name" placeholder="Your Name">
+            <input type="date" id="date">
+            <input type="time" id="time">
+            <button class="btn" onclick="bookAppointment()">Confirm</button>
+            <button class="btn" onclick="closeForm()">Close</button>
+        </div>
+
+        <!-- Chat System -->
+        <h2>Chat Support</h2>
+        <div id="chatBox"></div>
+        <input type="text" id="chatInput" placeholder="Type a message...">
+        <button class="btn" onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        function showForm(doctorName) {
+            document.getElementById("appointmentForm").style.display = "block";
+            document.getElementById("selectedDoctor").innerText = "Booking for: " + doctorName;
+        }
+
+        function closeForm() {
+            document.getElementById("appointmentForm").style.display = "none";
+        }
+
+        function bookAppointment() {
+            let name = document.getElementById("name").value;
+            let date = document.getElementById("date").value;
+            let time = document.getElementById("time").value;
+
+            if (name && date && time) {
+                alert("Appointment booked successfully for " + name + " on " + date + " at " + time);
+                closeForm();
+            } else {
+                alert("Please fill all fields!");
+            }
+        }
+
+        function sendMessage() {
+            let input = document.getElementById("chatInput").value;
+            if (input.trim() !== "") {
+                let chatBox = document.getElementById("chatBox");
+                let msg = document.createElement("p");
+                msg.innerText = "You: " + input;
+                chatBox.appendChild(msg);
+                document.getElementById("chatInput").value = "";
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }
+        }
+
+        function startVideoCall() {
+            window.open("https://meet.jit.si/telemedicine", "_blank");
+        }
+    </script>
+
+</body>
+</html>
