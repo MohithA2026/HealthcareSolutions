@@ -1,35 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Health Tips</title>
-    <img src="https://images.pexels.com/photos/6669476/pexels-photo-6669476.jpeg?auto=compress&cs=tinysrgb&w=600" style="width: 100%;">
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <p>Health is wealth, as they say! Here are some evidence-based health tips to help you maintain a balanced and healthy lifestyle:</p>
-    <p>1. Regular check-ups with your healthcare provider can help catch potential health issues early.</p>
-    <p>2. Incorporate physical activity into your daily routine, aiming for at least 150 minutes of moderate exercise each week.</p>
-    <p>3. Focus on mental health by practicing mindfulness and stress management techniques.</p>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            line-height: 1.6;
+            color: #333;
+            padding: 20px;
+        }
 
-    </head>
-    <body>
-        <h1>These are few Health Tips</h1>
-        <p>Eat a Balanced Diet: Include a variety of fruits, vegetables, whole grains, lean proteins, and healthy fats in your meals2.
+        /* Header and Home Button Styles */
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-            Stay Hydrated: Drink plenty of water throughout the day to support digestion, brain function, and overall energy levels.
-            
-            Exercise Regularly: Aim for at least 30 minutes of moderate physical activity most days of the week.
-            
-            Get Quality Sleep: Prioritize 7-9 hours of sleep each night to allow your body to recover and rejuvenate.
-            
-            Manage Stress: Practice relaxation techniques like meditation, yoga, or deep breathing to reduce stress levels.
-            
-            Avoid Harmful Substances: Limit alcohol consumption and avoid smoking or other harmful substances.
-            
-            Practice Good Hygiene: Wash your hands regularly, floss daily, and use sunscreen to protect your skin.
-            
-            Stay Socially Connected: Maintain strong relationships with family and friends to support mental well-being.
-            
-            Regular Check-Ups: Visit your doctor for routine health screenings and vaccinations</p>
-    </body>
-    </html>
+        header img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+        }
+
+        .home-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4828a7;
+            color: white;
+            text-align: center;
+            font-size: 1.1em;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            z-index: 1;
+        }
+
+        .home-button:hover {
+            background-color: #214888;
+        }
+
+            {
+            position: absolute;
+            top: 20px;
+            right: auto;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4828a7;
+            color: white;
+            text-align: center;
+            font-size: 1.1em;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .home-button:hover {
+            background-color: #214888;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #007BFF;
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        p:first-of-type {
+            font-weight: bold;
+            font-size: 1.3em;
+            color: #333;
+        }
+
+        /* Bold Text Example */
+        .bold-text {
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* List Styles */
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            background: #fff;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+            color: #444;
+        }
+
+        /* Button Styles */
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #007BFF;
+            color: white;
+            text-align: center;
+            font-size: 1.2em;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+        }
+
+        .home-button_center {
+            position: absolute;
+            top: 20;
+            left: 30%;
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Home Button -->
+    <div class="home-button_center">
+        <a href="first.html" class="home-button">Home</a>
+        <a href="Health tips.html" class="home-button">Healthcare Tip</a>
+        <a href="First Aid.html" class="home-button">First Aid</a>
+        <a href="TeleMidication.html" class="home-button">TeleMedication</a>
+        <a href="index.html"class="home-button">Logout</a>
+    </div>
+    <header>
+        <img src="https://images.pexels.com/photos/6669476/pexels-photo-6669476.jpeg?auto=compress&cs=tinysrgb&w=600"
+            alt="Health Tips Image">
+    </header>
+
+    <h1>These are few Health Tips</h1>
+
+    <p>Health is wealth, as they say! Here are some evidence-based health tips to help you maintain a balanced and
+        healthy lifestyle:</p>
+
+    <ul>
+        <li><span class="bold-text">Regular check-ups:</span> with your healthcare provider can help catch potential
+            health issues early.</li>
+        <li><span class="bold-text">Incorporate physical activity:</span> into your daily routine, aiming for at least
+            150 minutes of moderate exercise each week.</li>
+        <li><span class="bold-text">Focus on mental health:</span> by practicing mindfulness and stress management
+            techniques.</li>
+        <li><span class="bold-text">Eat a Balanced Diet:</span> Include a variety of fruits, vegetables, whole grains,
+            lean proteins, and healthy fats in your meals.</li>
+        <li><span class="bold-text">Stay Hydrated:</span> Drink plenty of water throughout the day to support digestion,
+            brain function, and overall energy levels.</li>
+        <li><span class="bold-text">Exercise Regularly:</span> Aim for at least 30 minutes of moderate physical activity
+            most days of the week.</li>
+        <li><span class="bold-text">Get Quality Sleep:</span> Prioritize 7-9 hours of sleep each night to allow your
+            body to recover and rejuvenate.</li>
+        <li><span class="bold-text">Manage Stress:</span> Practice relaxation techniques like meditation, yoga, or deep
+            breathing to reduce stress levels.</li>
+        <li><span class="bold-text">Avoid Harmful Substances:</span> Limit alcohol consumption and avoid smoking or
+            other harmful substances.</li>
+        <li><span class="bold-text">Practice Good Hygiene:</span> Wash your hands regularly, floss daily, and use
+            sunscreen to protect your skin.</li>
+        <li><span class="bold-text">Stay Socially Connected:</span> Maintain strong relationships with family and
+            friends to support mental well-being.</li>
+        <li><span class="bold-text">Regular Check-Ups:</span> Visit your doctor for routine health screenings and
+            vaccinations.</li>
+    </ul>
+
+</body>
+
+</html>
