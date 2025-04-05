@@ -1,25 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Health & BMI Calculator</title>
     <style>
-        body { font-family: sans-serif; margin: 0; padding: 0; }
-header { background-color: #18e745; color: white; text-align: center; padding: 1em 0; position: sticky; top: 0; z-index: 1000; }
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
-        nav ul { list-style: none; padding: 0; margin: 0; display: flex; justify-content: center; }
-        nav li { margin: 0 15px; }
-        nav a { color: white; text-decoration: none; }
-        main { padding: 20px; }
-        .product-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .product { border: 1px solid #ddd; padding: 15px; border-radius: 5px; }
-        input[type="text"], input[type="number"], select { width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box; }
-        button { background-color: #27ae60; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; }
-        #result { margin-top: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
-        footer { background-color: #f0f0f0; text-align: center; padding: 10px 0; }
-        .image-container { display: flex; justify-content: center; gap: 20px; } /* New CSS class for image alignment */
+        .logo {
+            color: black;   
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        header {
+            background-color: #18e745;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav li {
+            margin: 0 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .product-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .product {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #27ae60;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        footer {
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* New CSS class for image alignment */
     </style>
     <script>
         function calculateBMI(event) {
@@ -154,15 +235,18 @@ header { background-color: #18e745; color: white; text-align: center; padding: 1
         }
     </script>
 </head>
+
 <body>
     <header>
         <div class="logo">Health & BMI Calculator</div>
+        <br>
         <nav>
             <ul>
-                <li><a href="first.html"><button >Home</button></a></li>
+                <li><a href="first.html"><button>Home</button></a></li>
                 <li><a href="Health tips.html"><button onclick="login()">Healthcare Tip</button></a></li>
-                <li><a href="First Aid.html"><button >First Aid</button></a></li>
-                <li><a href="TeleMidacation.html"><button>TeleMedication</button></a></li>
+                <li><a href="First Aid.html"><button>First Aid</button></a></li>
+                <li><a href="TeleMidication.html"><button>TeleMedication</button></a></li>
+                <li> <a href="index.html"><button>Logout</button></a></li>
             </ul>
         </nav>
     </header>
@@ -170,18 +254,33 @@ header { background-color: #18e745; color: white; text-align: center; padding: 1
     <main>
         <div class="image-container"> <!-- New container for images -->
             <div class="Img">
-            <img src="https://images.pexels.com/photos/2383010/pexels-photo-2383010.jpeg?auto=compress&cs=tinysrgb&w=600" style="width: 300px; height: 200px; object-fit: cover;">
+                <img src="https://images.pexels.com/photos/2383010/pexels-photo-2383010.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    style="width: 300px; height: 200px; object-fit: cover;">
             </div>
-            <div class="Omg"> 
-            <img src="https://images.pexels.com/photos/2280568/pexels-photo-2280568.jpeg?auto=compress&cs=tinysrgb&w=600" style="width: 300px; height: 200px; object-fit: cover;">
+            <div class="Omg">
+                <img src="https://images.pexels.com/photos/2280568/pexels-photo-2280568.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    style="width: 300px; height: 200px; object-fit: cover;">
             </div>
         </div>
         <h1>Take Actions Before Taking Medicines</h1>
-        <p>  Prevention is Better tha Cure.</p>
-        <p>We should have the basic idea of our health status and be aware of our own body.In the Places where there is underserved Healthcare we are providing the first aid and a basic health status of your Body.</p>
-        <p>We also provide the nutritious diet and the healthy lifestyle to our customers.And follow the steps for your benifits</p>
-        <p>The importance of preventive health care cannot be over-emphasized in the wake of shocking statistics of how health is deteriorating rapidly due to a lack of preventive measures. This grueling reality must have been on Elgin Moray’s mind when he said, “If prompt and effective action is not forthcoming, the medical services of the central and local authorities will go where the school of dental services has already gone down the drain” (British Medical Journal, 1949, p. 1416). Elgin made this observation many years ago but it is very relevant in today’s preventive medicine. It emphasizes the neglect that practitioners and stakeholders gave and still give to preventive healthcare.</p>
-        <p>Well, as the old adage goes, prevention is better than cure. Preventive healthcare results in reduced mortality rates and this consequently increase life expectancy. Preventive medicine is significantly cheaper as compared to traditional medicine that many people prefer. Lack of preventive medicine puts individuals in danger of insalubrious lifestyles and varying food habits (Jekel, Katz and Elmore, 2001, p. 114). Being strong and big is not a sign of a healthy lifestyle. Someone may be strong and active but inside he or she harbors a health disaster waiting to strike. </p>
+        <p> Prevention is Better tha Cure.</p>
+        <p>We should have the basic idea of our health status and be aware of our own body.In the Places where there is
+            underserved Healthcare we are providing the first aid and a basic health status of your Body.</p>
+        <p>We also provide the nutritious diet and the healthy lifestyle to our customers.And follow the steps for your
+            benifits</p>
+        <p>The importance of preventive health care cannot be over-emphasized in the wake of shocking statistics of how
+            health is deteriorating rapidly due to a lack of preventive measures. This grueling reality must have been
+            on Elgin Moray’s mind when he said, “If prompt and effective action is not forthcoming, the medical services
+            of the central and local authorities will go where the school of dental services has already gone down the
+            drain” (British Medical Journal, 1949, p. 1416). Elgin made this observation many years ago but it is very
+            relevant in today’s preventive medicine. It emphasizes the neglect that practitioners and stakeholders gave
+            and still give to preventive healthcare.</p>
+        <p>Well, as the old adage goes, prevention is better than cure. Preventive healthcare results in reduced
+            mortality rates and this consequently increase life expectancy. Preventive medicine is significantly cheaper
+            as compared to traditional medicine that many people prefer. Lack of preventive medicine puts individuals in
+            danger of insalubrious lifestyles and varying food habits (Jekel, Katz and Elmore, 2001, p. 114). Being
+            strong and big is not a sign of a healthy lifestyle. Someone may be strong and active but inside he or she
+            harbors a health disaster waiting to strike. </p>
 
         <h1>Check Your Health Status</h1>
         <p>Calculate your BMI and learn about your health.</p>
@@ -191,11 +290,12 @@ header { background-color: #18e745; color: white; text-align: center; padding: 1
             <div class="product-container">
                 <div class="product">
                     <h2>Name</h2>
-                    <input type="text" id="name" name="name" required minlength="4" maxlength="15" placeholder="Your Name"/>
+                    <input type="text" id="name" name="name" required minlength="4" maxlength="15"
+                        placeholder="Your Name" />
                 </div>
                 <div class="product">
                     <h2>Height</h2>
-                    <input type="number" id="height" name="height" required step="0.01" placeholder="Enter Height"/>
+                    <input type="number" id="height" name="height" required step="0.01" placeholder="Enter Height" />
                     <select id="heightUnit">
                         <option value="meters">Meters</option>
                         <option value="feet">Feet</option>
@@ -204,11 +304,11 @@ header { background-color: #18e745; color: white; text-align: center; padding: 1
                 </div>
                 <div class="product">
                     <h2>Weight (kg)</h2>
-                    <input type="number" id="weight" name="weight" required placeholder="Weight in kg"/>
+                    <input type="number" id="weight" name="weight" required placeholder="Weight in kg" />
                 </div>
                 <div class="product">
                     <h2>Age</h2>
-                    <input type="number" id="age" name="age" required placeholder="Your Age"/>
+                    <input type="number" id="age" name="age" required placeholder="Your Age" />
                 </div>
                 <div class="product">
                     <h2>Gender</h2>
@@ -235,11 +335,12 @@ header { background-color: #18e745; color: white; text-align: center; padding: 1
                     </select>
                 </div>
             </div>
+            <br>
             <button type="submit">Calculate BMI</button>
         </form>
 
         <div id="result"></div>
-        
+
         <h1>Select a Disease</h1>
         <div class="disease-container">
             <select id="diseaseSelect">
@@ -256,44 +357,58 @@ header { background-color: #18e745; color: white; text-align: center; padding: 1
         </div>
         <div class="Introduction">
             <h1>Diseases</h1>
-          <p>Diseases are a vast and critical topic, encompassing everything from common colds to complex conditions like cancer. Here's a brief overview:</p>
+            <p>Diseases are a vast and critical topic, encompassing everything from common colds to complex conditions
+                like cancer. Here's a brief overview:</p>
 
-           <p> 1. Types of Diseases:</p>
-            
-            <p>Infectious Diseases: Caused by pathogens like bacteria, viruses, fungi, or parasites (e.g., flu, malaria).
-            
-            Non-Infectious Diseases: Result from genetic, environmental, or lifestyle factors (e.g., diabetes, heart disease).
-            
-            Chronic Diseases: Long-lasting conditions that often require ongoing management (e.g., asthma, arthritis).
-            
-            Acute Diseases: Sudden onset and short duration (e.g., appendicitis).</p>
-            
-           <p> 2. Causes and Risk Factors:</p>
-            
+            <p> 1. Types of Diseases:</p>
+
+            <p>Infectious Diseases: Caused by pathogens like bacteria, viruses, fungi, or parasites (e.g., flu,
+                malaria).
+
+                Non-Infectious Diseases: Result from genetic, environmental, or lifestyle factors (e.g., diabetes, heart
+                disease).
+
+                Chronic Diseases: Long-lasting conditions that often require ongoing management (e.g., asthma,
+                arthritis).
+
+                Acute Diseases: Sudden onset and short duration (e.g., appendicitis).</p>
+
+            <p> 2. Causes and Risk Factors:</p>
+
             <p>Genetics: Some diseases are inherited (e.g., cystic fibrosis).
-            
-            Lifestyle Choices: Poor diet, lack of exercise, and smoking can lead to conditions like obesity or lung cancer.
-            
-            Environmental Factors: Pollution and exposure to toxins can trigger diseases.
-            
-            Infections: Spread through contact, air, water, or vectors like mosquitoes.</p>
-            
-            <p>3. Prevention and Management:</p>
-            
-            <p>Vaccination: Protects against diseases like measles and polio.
-            
-            Healthy Lifestyle: Balanced diet, regular exercise, and avoiding harmful habits.
-            
-            Early Detection: Regular check-ups and screenings can catch diseases early.
-            
-            Treatment: Ranges from medication to surgery, depending on the condition.</p>  
-<img src="https://th.bing.com/th/id/R.f72d3ec0ead8037d2cd96213dfc26fa6?rik=cKiIOW%2fs5aUpQg&riu=http%3a%2f%2fwww.metapharmacyservices.com%2fwp-content%2fuploads%2f2015%2f12%2finfections-disease-therapy.jpg&ehk=YWda6U1jm2A0y6kKZccEsNt8EUEJuvlAi%2fH0W8CPvtI%3d&risl=&pid=ImgRaw&r=0" style="width: 800px; height: 500px;">
-<p>Our comprehensive A to Z listing ensures easy navigation, allowing you to quickly find information relevant to your specific symptoms. Each article provides valuable insights into the symptoms, their possible causes, and related medical conditions. We understand the importance of staying up-to-date, so our articles also include links to the latest news, research, and drugs, enabling you to access additional resources for a comprehensive understanding of your symptoms.</p>
-<p>Take charge of your health by arming yourself with knowledge. Use our A to Z listing to explore symptom-related articles, and empower yourself to have meaningful discussions with your healthcare provider. Remember, early detection and prompt medical attention are crucial for effective management and treatment of various conditions</p>
-<img src="https://thumbs.dreamstime.com/b/modern-human-diseases-infographic-design-template-icons-healthcare-infographic-visualization-bubble-design-modern-human-215290317.jpg" style="width: 800px; height: 500px;">
-<p> </p>
 
-            
+                Lifestyle Choices: Poor diet, lack of exercise, and smoking can lead to conditions like obesity or lung
+                cancer.
+
+                Environmental Factors: Pollution and exposure to toxins can trigger diseases.
+
+                Infections: Spread through contact, air, water, or vectors like mosquitoes.</p>
+
+            <p>3. Prevention and Management:</p>
+
+            <p>Vaccination: Protects against diseases like measles and polio.
+
+                Healthy Lifestyle: Balanced diet, regular exercise, and avoiding harmful habits.
+
+                Early Detection: Regular check-ups and screenings can catch diseases early.
+
+                Treatment: Ranges from medication to surgery, depending on the condition.</p>
+            <img src="https://th.bing.com/th/id/R.f72d3ec0ead8037d2cd96213dfc26fa6?rik=cKiIOW%2fs5aUpQg&riu=http%3a%2f%2fwww.metapharmacyservices.com%2fwp-content%2fuploads%2f2015%2f12%2finfections-disease-therapy.jpg&ehk=YWda6U1jm2A0y6kKZccEsNt8EUEJuvlAi%2fH0W8CPvtI%3d&risl=&pid=ImgRaw&r=0"
+                style="width: 800px; height: 500px;">
+            <p>Our comprehensive A to Z listing ensures easy navigation, allowing you to quickly find information
+                relevant to your specific symptoms. Each article provides valuable insights into the symptoms, their
+                possible causes, and related medical conditions. We understand the importance of staying up-to-date, so
+                our articles also include links to the latest news, research, and drugs, enabling you to access
+                additional resources for a comprehensive understanding of your symptoms.</p>
+            <p>Take charge of your health by arming yourself with knowledge. Use our A to Z listing to explore
+                symptom-related articles, and empower yourself to have meaningful discussions with your healthcare
+                provider. Remember, early detection and prompt medical attention are crucial for effective management
+                and treatment of various conditions</p>
+            <img src="https://thumbs.dreamstime.com/b/modern-human-diseases-infographic-design-template-icons-healthcare-infographic-visualization-bubble-design-modern-human-215290317.jpg"
+                style="width: 800px; height: 500px;">
+            <p> </p>
+
+
         </div>
     </main>
 
@@ -301,4 +416,5 @@ header { background-color: #18e745; color: white; text-align: center; padding: 1
         <p>&copy; 2025 Health Calculator. All rights reserved.</p>
     </footer>
 </body>
+
 </html>
