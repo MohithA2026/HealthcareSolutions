@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -130,17 +131,55 @@
                 text-align: center;
             }
         }
+
+        .btn_home {
+            background: #ff6f61;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.3s;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        .btn_home:hover {
+            background: #e0483b;
+            transform: scale(1.05);
+        }
+        .logout {
+            background: #ff6f61;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.3s;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .logout:hover {
+            background: #e0483b;
+            transform: scale(1.05);
+        }
     </style>
 </head>
+
 <body>
-
     <header>Telemedicine Webpage</header>
-
+    <a href="first.html"><button class="btn_home">Home</button></a>
+    <a href="index.html"><button class="logout">Logout</button></a>
     <div class="container">
         <h2>Available Doctors</h2>
 
         <div class="doctor">
-            <img src="https://via.placeholder.com/70" alt="Doctor">
+            <img src="doc.png" alt="Doctor">
             <div>
                 <h3>Dr. John Doe</h3>
                 <p>Cardiologist</p>
@@ -150,7 +189,7 @@
         </div>
 
         <div class="doctor">
-            <img src="https://via.placeholder.com/70" alt="Doctor">
+            <img src="doc.png" alt="Doctor">
             <div>
                 <h3>Dr. Jane Smith</h3>
                 <p>Dermatologist</p>
@@ -169,7 +208,9 @@
             <button class="btn" onclick="bookAppointment()">Confirm</button>
             <button class="btn" onclick="closeForm()">Close</button>
         </div>
-
+        <br>
+        <br>
+        <br>
         <!-- Chat System -->
         <h2>Chat Support</h2>
         <div id="chatBox"></div>
@@ -218,4 +259,5 @@
     </script>
 
 </body>
+
 </html>
